@@ -79,17 +79,17 @@ More steps = better memorization, but diminishing returns after a point.
 ### 3. Model Size Considerations
 
 The current model is intentionally tiny:
-- 1 layer
-- 4 attention heads
-- 16-dimensional embeddings
-- ~10,000 parameters
+- 4 Layers (1 layer in original)
+- 4 Attention Heads
+- 80 character context window (16 character blocksize in original)
+- 200,000 Parameters (10,000 parameters in original)
 
 This means:
 - ✅ Fast training (seconds to minutes)
 - ✅ Can run on any Mac
 - ✅ Great for learning and experimentation
 - ⚠️ Limited capacity (won't learn complex patterns)
-- ⚠️ Works best on small, focused datasets
+- ⚠️ Works best on small, focused datasets (names, cities)
 
 ### 4. What Works Well
 
@@ -111,7 +111,7 @@ This means:
 When generating:
 - `--temp 0.1` - Very conservative, repetitive
 - `--temp 0.5` - Balanced (default)
-- `--temp 0.8` - More creative
+- `--temp 0.8` - More creative, randomized
 - `--temp 1.0` - Very creative, possibly nonsensical
 
 ## Example Workflows
@@ -211,6 +211,7 @@ These are completely new, "hallucinated" outputs based on learned patterns.
 - **Causal attention:** Only looks at previous characters
 - **No GPU acceleration:** Pure Swift, runs on CPU
 - **Deterministic training:** Same data + steps = same model
+- **Multi-threaded Training on macOS
 
 ## Limitations
 
